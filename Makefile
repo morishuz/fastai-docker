@@ -16,7 +16,7 @@ run:
 	docker run --rm -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU)
 
 # using bash
-run_bash:
+bash:
 	docker run --rm -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU) bash
 
 
