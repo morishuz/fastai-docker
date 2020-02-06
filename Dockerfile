@@ -1,5 +1,4 @@
 # CPU container running fast.ai and jupyter
-
 FROM python:3.7.3-stretch
 
 RUN mkdir -p /app 

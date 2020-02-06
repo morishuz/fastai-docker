@@ -4,6 +4,8 @@ Docker Container supporting the [PyTorch](https://pytorch.org/) based [fast.ai](
 
 ## CPU
 
+A CPU only version specifically for use on non-GPU backend servers, MacOS or Windows desktops.  
+
 build:
 
 ```
@@ -22,4 +24,7 @@ make bash
 ```
 
 ## GPU
+
+For linux machines. Requires a GPU, CUDA and nvidia docker
+
 Coming soon
