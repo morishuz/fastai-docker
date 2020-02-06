@@ -1,5 +1,6 @@
 # fastai-docker
-Docker Container supporting fastai library and jupyter
+
+Docker Container supporting the [pytorch](https://pytorch.org/) based [Fast.ai](https://www.fast.ai/) library and Jupyter notebooks
 
 ## CPU
 
