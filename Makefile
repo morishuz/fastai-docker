@@ -13,7 +13,7 @@ rebuild:
 
 # run with jupyter
 run:
-	docker run --rm -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU)
+	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU)
 
 # using bash
 bash:
