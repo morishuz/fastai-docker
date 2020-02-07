@@ -9,14 +9,16 @@ ENV LANG="C.UTF-8" LC_ALL="C.UTF-8" PATH="/opt/venv/bin:$PATH" PYTHONPATH="/usr/
 USER root
 
 # pytorch
-RUN pip3 install torch==1.3.1+cpu torchvision==0.4.2+cpu -f https://download.pytorch.org/whl/torch_stable.html
+#RUN pip3 install torch==1.3.1+cpu torchvision==0.4.2+cpu -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 install torch==1.0.1+cpu torchvision==0.2.2+cpu -f https://download.pytorch.org/whl/torch_stable.html
 
 # supporting libraries including starlette 
 RUN pip3 install fastai aiohttp asyncio uvicorn starlette jupyter pillow==6.1
+RUN pip3 install pytest
 
 # set-up user for jupyter notebook
-RUN useradd -ms /bin/bash jupyter
-USER jupyter
+# RUN useradd -ms /bin/bash jupyter
+# USER jupyter
 
 # Set the container working directory to the user home folder
 WORKDIR /home/jupyter
