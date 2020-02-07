@@ -17,7 +17,7 @@ run:
 
 # using bash
 bash:
-	docker run --rm -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU) bash
+	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU) bash
 
 
 	

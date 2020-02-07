@@ -12,8 +12,6 @@ RUN pip install --upgrade pip
 
 # pytorch
 RUN pip3 install torch==1.3.1+cpu torchvision==0.4.2+cpu -f https://download.pytorch.org/whl/torch_stable.html
-#RUN pip3 install torch==1.2.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-#RUN pip3 install torch==1.0.1 torchvision==0.2.2 
 
 # fastai
 RUN pip3 install fastai
@@ -22,8 +20,8 @@ RUN pip3 install fastai
 RUN pip3 install aiohttp asyncio uvicorn starlette jupyter pillow==6.1 pytest
 
 # set-up user for jupyter notebook
-# RUN useradd -ms /bin/bash jupyter
-# USER jupyter
+RUN useradd -ms /bin/bash jupyter
+USER jupyter
 
 # Set the container working directory to the user home folder
 WORKDIR /home/jupyter
