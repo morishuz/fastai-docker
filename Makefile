@@ -24,13 +24,13 @@ run:
 	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU)
 
 run_gpu:
-	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_GPU)
+	nvidia-docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_GPU)
 
 # using bash
 bash:
 	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_CPU) bash
 
 bash_gpu:
-	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_GPU) bash
+	nvidia-docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME_GPU) bash
 
 	
