@@ -1,5 +1,7 @@
 # CPU container running fast.ai and jupyter
-FROM python:3.7.3-stretch
+#FROM python:3.7.3-stretch #cpu version
+FROM nvidia/cuda:10.0-base-ubuntu18.04
+#nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
 RUN mkdir -p /app 
 WORKDIR /app
@@ -8,10 +10,47 @@ ENV LANG="C.UTF-8" LC_ALL="C.UTF-8" PATH="/opt/venv/bin:$PATH" PYTHONPATH="/usr/
 
 USER root
 
-RUN pip install --upgrade pip
+# --- python and other native stuff ----
+
+RUN DEBIAN_FRONTEND=noninteractive && \ 
+    apt-get update          && \ 
+    apt-get install -y --no-install-recommends \
+    apt-utils               \    
+    sudo                    \
+    git                     \ 
+    wget                    \
+    bzip2                   \
+    ca-certificates         \
+    locales                 \
+    fonts-liberation        \
+    zip unzip               \
+    build-essential         \ 
+    cmake                   \
+    libarchive-dev          \
+    libboost-all-dev        \
+    libsm6                  \
+    libxext6                \
+    libxrender-dev          \
+    #ffmpeg                  \
+    pkg-config              \ 
+    python3.7               \
+    python3.7-dev           \
+    python3-pip             \
+    python3-venv            \
+    python3-numpy           \
+    python-pil              \
+    python-lxml          && \ 
+    rm -rf /var/lib/apt/lists/*
+
+# ------------------------------
+
+RUN pip3 install --upgrade pip
+RUN pip3 install setuptools
 
 # pytorch
-RUN pip3 install torch==1.3.1+cpu torchvision==0.4.2+cpu -f https://download.pytorch.org/whl/torch_stable.html
+#RUN pip3 install torch==1.3.1 torchvision==0.4.2 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 install torch==1.3.1 torchvision==0.4.2 -f https://download.pytorch.org/whl/cu100/torch_stable.html
+#RUN pip3 install torch torchvision
 
 # fastai
 RUN pip3 install fastai
