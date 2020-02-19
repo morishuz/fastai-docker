@@ -18,7 +18,7 @@ build:
 make build
 ```
 
-launch in jupyter:
+launch jupyter:
 
 ```
 make run
@@ -31,7 +31,7 @@ make bash
 
 ## GPU
 
-For linux machines. Requires a GPU, CUDA and nvidia docker. Currently this image is build assuming CUDA 10.1 is installed. To work with other versions, modify the ``xx.x`` in this first line of the GPU Dockerfile: ``FROM nvidia/cuda:xx.x-cudnn7-devel-ubuntu18.04``
+For linux machines. Requires a GPU, CUDA and nvidia docker. Currently this image is build assuming CUDA 10.1. To work with other versions, modify the ``xx.x`` in this first line of the GPU Dockerfile: ``FROM nvidia/cuda:xx.x-cudnn7-devel-ubuntu18.04``
 
 ```
 cd gpu
@@ -43,7 +43,7 @@ build:
 make build
 ```
 
-launch in jupyter:
+launch jupyter:
 
 ```
 make run
