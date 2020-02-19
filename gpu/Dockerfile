@@ -1,6 +1,6 @@
 # CPU container running fast.ai and jupyter
-FROM nvidia/cuda:10.1-base-ubuntu18.04
-#nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+#FROM nvidia/cuda:10.1-base-ubuntu18.04
+FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 RUN mkdir -p /app 
 WORKDIR /app
@@ -67,6 +67,9 @@ CMD jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
 
 ## issues / notes
 ## fails fastai test: make test-fast
+## ("ERROR collecting tests/test_text_qrnn.py")
 ## also wont run this:
 ## python3
 ## >>> from fastai.text.models.qrnn import QRNN, QRNNLayer
+## test for gpu on torch:
+## https://stackoverflow.com/questions/48152674/how-to-check-if-pytorch-is-using-the-gpu
