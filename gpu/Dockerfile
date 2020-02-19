@@ -13,10 +13,6 @@ USER root
 
 # --- python and other native stuff ----
 
-#sudo add-apt-repository universe
-#sudo apt-get update
-#sudo apt-get install freeglut3 freeglut3-dev libxi-dev libxmu-dev
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
@@ -53,10 +49,6 @@ RUN pip3 install setuptools
 # make sure we can run scrips with python command even though python2 is not installed
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
-# pytorch
-#RUN pip3 install torch==1.3.1 torchvision==0.4.2 -f https://download.pytorch.org/whl/cu100/torch_stable.html
-#RUN pip3 install torch torchvision
-
 # fastai
 RUN pip3 install fastai
 
@@ -66,9 +58,15 @@ RUN pip3 install aiohttp asyncio uvicorn starlette jupyter pillow==6.1 pytest
 #RUN git clone https://github.com/fastai/course-v3.git
 
 # set-up user for jupyter notebook
-##RUN useradd -ms /bin/bash jupyter
-##USER jupyter
+RUN useradd -ms /bin/bash jupyter
+USER jupyter
 
 # Set the container working directory to the user home folder
 WORKDIR /home/jupyter
 CMD jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
+
+## issues / notes
+## fails fastai test: make test-fast
+## also wont run this:
+## python3
+## >>> from fastai.text.models.qrnn import QRNN, QRNNLayer
