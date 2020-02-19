@@ -62,12 +62,3 @@ USER jupyter
 # Set the container working directory to the user home folder
 WORKDIR /home/jupyter
 CMD jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
-
-## issues / notes
-## fails fastai test: make test-fast
-## ("ERROR collecting tests/test_text_qrnn.py")
-## also wont run this:
-## python3
-## >>> from fastai.text.models.qrnn import QRNN, QRNNLayer
-## test for gpu on torch:
-## https://stackoverflow.com/questions/48152674/how-to-check-if-pytorch-is-using-the-gpu
