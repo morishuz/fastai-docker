@@ -1,7 +1,5 @@
 # CPU container running fast.ai and jupyter
-#FROM python:3.7.3-stretch #cpu version
-#FROM nvidia/cuda:10.0-base-ubuntu18.04
-FROM nvidia/cuda:10.0-base-ubuntu16.04
+FROM nvidia/cuda:10.1-base-ubuntu18.04
 #nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
 RUN mkdir -p /app 
@@ -14,6 +12,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 USER root
 
 # --- python and other native stuff ----
+
+#sudo add-apt-repository universe
+#sudo apt-get update
+#sudo apt-get install freeglut3 freeglut3-dev libxi-dev libxmu-dev
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -30,19 +32,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libc6-dev \
         libbz2-dev \
         libjpeg-dev \
+        freeglut3 \
+        freeglut3-dev \ 
+        libxi-dev \ 
+        libxmu-dev \
         zip \
         unzip \
         libpng-dev \
-        python3.5               \
-        python3.5-dev           \
+        #python3.5               \
+        #python3.5-dev           \
         #python3.7              \
-        #python3.7-dev          \
-        python3-pip             \
-        python3-venv            \
-        python3-numpy           \
-        protobuf-compiler      \
-        python-pil              \
-        python-lxml            && \ 
+        python3-dev          \
+        #python-dev          \
+        #python3-pip             \
+        #python3-venv            \
+        #python3-numpy           \
+        protobuf-compiler       \
+        #python-pil              \
+        #python-lxml            && \ 
+        python3-pip && \
      rm -rf /var/lib/apt/lists/*
 
 # ------------------------------
@@ -51,7 +59,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install setuptools
 
 # pytorch
-RUN pip3 install torch==1.3.1 torchvision==0.4.2 -f https://download.pytorch.org/whl/cu100/torch_stable.html
+#RUN pip3 install torch==1.3.1 torchvision==0.4.2 -f https://download.pytorch.org/whl/cu100/torch_stable.html
 #RUN pip3 install torch torchvision
 
 # fastai
