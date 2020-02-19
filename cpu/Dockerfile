@@ -1,5 +1,3 @@
-# CPU container running fast.ai and jupyter
-#FROM python:3.7.3-stretch
 FROM ubuntu:18.04
 
 #RUN mkdir -p /app 
@@ -41,11 +39,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip3 install --upgrade pip
 RUN pip3 install setuptools
 
+# make sure we can run scrips with python command
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+
 # fastai
 RUN pip3 install fastai
 
 # supporting libraries including starlette 
 RUN pip3 install aiohttp asyncio uvicorn starlette jupyter pillow==6.1 pytest
+
+#RUN git clone https://github.com/fastai/course-v3.git
 
 # set-up user for jupyter notebook
 RUN useradd -ms /bin/bash jupyter

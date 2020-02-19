@@ -1,9 +1,7 @@
-# CPU container running fast.ai and jupyter
-#FROM nvidia/cuda:10.1-base-ubuntu18.04
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
-RUN mkdir -p /app 
-WORKDIR /app
+#RUN mkdir -p /app 
+#WORKDIR /app
 
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 ENV LANG="C.UTF-8" LC_ALL="C.UTF-8" PATH="/opt/venv/bin:$PATH" PYTHONPATH="/usr/src/app:$PYTHONPATH" PIP_NO_CACHE_DIR="false"
@@ -46,7 +44,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip3 install --upgrade pip
 RUN pip3 install setuptools
 
-# make sure we can run scrips with python command even though python2 is not installed
+# make sure we can run scrips with python command
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
 # fastai

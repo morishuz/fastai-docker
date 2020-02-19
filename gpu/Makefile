@@ -11,9 +11,11 @@ build:
 rebuild:
 	docker build -f Dockerfile -t $(NAME) . --pull --no-cache
 
+# run with jupyter
 run:
 	nvidia-docker run --rm --ipc=host -w /local/src -it -p 8888:8888 -v $(srcdir):/local $(NAME)
 
+# using bash
 bash:
 	nvidia-docker run --rm --ipc=host -w /local/src -it -p 8888:8888 -v $(srcdir):/local $(NAME) bash
 
