@@ -39,17 +39,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         zip \
         unzip \
         libpng-dev \
-        #python3.5               \
-        #python3.5-dev           \
-        #python3.7              \
-        python3-dev          \
-        #python-dev          \
-        #python3-pip             \
-        #python3-venv            \
-        #python3-numpy           \
-        protobuf-compiler       \
-        #python-pil              \
-        #python-lxml            && \ 
+        ninja-build \
+        python3-dev \
+        protobuf-compiler \
         python3-pip && \
      rm -rf /var/lib/apt/lists/*
 
