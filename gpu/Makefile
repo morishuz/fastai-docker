@@ -2,7 +2,7 @@
 NAME=gpu_fastai
 
 # get local dir path
-srcdir ?= $(shell pwd)
+srcdir ?= $(shell pwd)/..
 
 build:
 	docker build -f Dockerfile -t $(NAME) .
@@ -11,10 +11,10 @@ build:
 rebuild:
 	docker build -f Dockerfile -t $(NAME) . --pull --no-cache
 
-run_gpu:
-	nvidia-docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME)
+run:
+	nvidia-docker run --rm --ipc=host -w /local/src -it -p 8888:8888 -v $(srcdir):/local $(NAME)
 
-bash_gpu:
-	nvidia-docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME) bash
+bash:
+	nvidia-docker run --rm --ipc=host -w /local/src -it -p 8888:8888 -v $(srcdir):/local $(NAME) bash
 
 	

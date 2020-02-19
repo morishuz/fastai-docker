@@ -2,7 +2,7 @@
 NAME=cpu_fastai
 
 # get local dir path
-srcdir ?= $(shell pwd)
+srcdir ?= $(shell pwd)/..
 
 build:
 	docker build -f Dockerfile -t $(NAME) .
@@ -13,8 +13,8 @@ rebuild:
 
 # run with jupyter
 run:
-	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME)
+	docker run --rm --ipc=host -w /local/src -it -p 8888:8888 -v $(srcdir):/local $(NAME)
 
 # using bash
 bash:
-	docker run --rm --ipc=host -w /local -it -p 8888:8888 -v $(srcdir):/local $(NAME) bash
+	docker run --rm --ipc=host -w /local/src -it -p 8888:8888 -v $(srcdir):/local $(NAME) bash
