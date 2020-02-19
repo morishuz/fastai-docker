@@ -71,6 +71,8 @@ RUN pip3 install fastai
 # supporting libraries including starlette 
 RUN pip3 install aiohttp asyncio uvicorn starlette jupyter pillow==6.1 pytest
 
+#RUN git clone https://github.com/fastai/course-v3.git
+
 # set-up user for jupyter notebook
 ##RUN useradd -ms /bin/bash jupyter
 ##USER jupyter
